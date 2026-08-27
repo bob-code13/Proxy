@@ -1,0 +1,20 @@
+name: Build and Deploy Container to Azure
+
+on:
+  push:
+    branches:
+      - main  # Change this to master if your default branch is named master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout GitHub Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker Image Locally
+      run: |
+        docker build -t azure-proxy:latest .
