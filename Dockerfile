@@ -1,10 +1,8 @@
-FROM shadowsocks/shadowsocks-libev:v3.3.5
+FROM lscr.io/linuxserver/chromium:latest
 
-# Configure environment for public routing
-ENV SERVER_ADDR=0.0.0.0
-ENV SERVER_PORT=80
-ENV PASSWORD=BobertProxy123!
-ENV METHOD=aes-256-gcm
-ENV TIMEOUT=300
-
+# Configure the container for Azure's web port
+ENV PORT=80
 EXPOSE 80
+
+# Auto-start the browser interface engine
+CMD ["/init"]
